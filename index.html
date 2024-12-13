@@ -14,6 +14,12 @@
       background-image: url('bright-squares.png');
       color: #333;
     }
+    .welcome {
+      /* Add your existing styles here */
+      font-size: 1.5em;
+      color: #333;
+      margin: 20px 0;
+    }
     .banner {
       width: 100%;
       height: 150px;
@@ -23,7 +29,7 @@
     }
     .container {
       max-width: 600px;
-      margin: 0px auto;
+      margin: 0 auto;
       padding: 20px;
       background: #fffaf0;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -81,11 +87,12 @@
 </head>
 <body>
 <div class="banner"></div>
+<div class="welcome">Välkommen</div>
 <div class="container">
   <img id="riddle-image" class="riddle-image" src="" alt="" style="display: none;">
   <div id="riddle" class="riddle">Loading...</div>
-  <input type="text" id="answer" placeholder="Enter the password">
-  <button onclick="checkAnswer()">Submit</button>
+  <input type="text" id="answer" placeholder="Skriv in ditt svar">
+  <button onclick="checkAnswer()">Skicka svar</button>
   <div id="previous" class="previous"></div>
 </div>
 
@@ -107,10 +114,14 @@
     };
   }
 
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+  }
+
   async function loadRiddles() {
     const { year, name } = getQueryParams();
     if (!year || !name) {
-      document.getElementById('riddle').innerText = 'Missing year or name query parameter.';
+      document.getElementById('riddle').innerText = 'Saknar query-parametern år eller namn.';
       return;
     }
 
@@ -120,14 +131,20 @@
       const response = await fetch(jsonFilePath);
       const data = await response.json();
       if (!Array.isArray(data.riddles) || typeof data.congratulatoryMessage !== 'string') {
-        throw new Error('Invalid JSON structure');
+        throw new Error('Ogiltig JSON-struktur');
       }
       riddles = data.riddles;
       showRiddle();
       updatePreviousRiddles();
     } catch (error) {
-      document.getElementById('riddle').innerText = 'Failed to load riddles.';
-      console.error('Error loading riddles:', error);
+      document.getElementById('riddle').innerText = 'Misslyckades med att ladda gåtor.';
+      console.error('Fel vid laddning av gåtor:', error);
+    }
+
+    // Update the welcome message
+    const welcomeDiv = document.querySelector('.welcome');
+    if (welcomeDiv) {
+      welcomeDiv.innerText = `Välkommen, ${capitalizeFirstLetter(name)}!`;
     }
   }
 
@@ -144,8 +161,7 @@
       }
       document.getElementById('answer').value = '';
     } else {
-      const congratsMessage = riddles.congratulatoryMessage || 'Congratulations! You solved all the riddles!';
-      document.getElementById('riddle').innerText = congratsMessage;
+      document.getElementById('riddle').innerText = riddles.congratulatoryMessage || 'Grattis! Du har klarat av alla gåtor!';
       document.getElementById('answer').style.display = 'none';
       document.querySelector('button').style.display = 'none';
       document.getElementById('riddle-image').style.display = 'none';
@@ -169,7 +185,7 @@
       showRiddle();
       updatePreviousRiddles();
     } else {
-      alert('Incorrect password. Try again!');
+      alert('Fel svar. Försök igen!');
     }
   }
 
