@@ -150,12 +150,13 @@
   }
 
   function showRiddle() {
+    const { year } = getQueryParams();
     if (currentRiddleIndex < riddles.length) {
       const currentRiddle = riddles[currentRiddleIndex];
       document.getElementById('riddle').innerText = currentRiddle.question;
       const riddleImage = document.getElementById('riddle-image');
       if (currentRiddle.image) {
-        riddleImage.src = currentRiddle.image;
+        riddleImage.src = `${year}/${currentRiddle.image}`;
         riddleImage.style.display = 'block';
       } else {
         riddleImage.style.display = 'none';
