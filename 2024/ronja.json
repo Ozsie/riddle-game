@@ -1,8 +1,6 @@
 {
-  "congratulatoryMessage": "Great job! You've solved all the riddles!",
+  "congratulatoryMessage": "Snyggt jobbat Ronja!",
   "riddles": [
-    { "question": "What has keys but can't open locks?", "image": "lights.png", "answer": "piano" },
-    { "question": "What comes once in a minute, twice in a moment, but never in a thousand years?", "answer": "m" },
-    { "question": "The more you take, the more you leave behind. What am I?", "answer": "footsteps" }
+    { "question": "För att komma vidare behöver du och Ada samarbeta. Hon har ditt lösenord. Adas lösenord är roblox", "answer": "minecraft" }
   ]
 }
