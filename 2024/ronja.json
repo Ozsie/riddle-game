@@ -1,6 +1,10 @@
 {
-  "congratulatoryMessage": "Snyggt jobbat Ronja!",
+  "congratulatoryMessage": "Snyggt jobbat Ronja!För att hitta skatten behöver du ta hjälp av Ada. Dina bokstäver är: G A",
   "riddles": [
-    { "question": "För att komma vidare behöver du och Ada samarbeta. Hon har ditt lösenord. Adas lösenord är roblox", "answer": "minecraft" }
+    { "question": "För att komma vidare behöver du och Ada samarbeta. Hon har ditt lösenord. Adas lösenord är roblox", "answer": "minecraft" },
+    { "question": "Vilken gubbe har aldrig varit barn?", "answer": "snögubben" },
+    { "question": "Om du tar sista siffran i Adas förra svar, och räknar Kalle Anka-pocket från vänster, vilket nummer på pocketen hamnar du på då?", "answer": "148" },
+    { "question": "Lös rebusen och fyll i svaret. Byt ut RONJA mot A", "answer": "kylskåp" },
+    { "question": "Vem har aldrig klätt sig själv trots att den är jättegammal?", "answer": "julgranen" }
   ]
 }
